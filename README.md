@@ -1,4 +1,4 @@
 catalan-dict-lt
 ===============
 
-Catalan dictionary &amp;&amp; tools for LanguageTool
+Catalan dictionary &amp; tools for LanguageTool
