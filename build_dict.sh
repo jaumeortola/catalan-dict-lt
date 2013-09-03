@@ -1,7 +1,7 @@
 #!/bin/bash
 # sort
 export LC_ALL=C && sort diccionari.txt >diccionari_sorted.txt
-cp diccionari_sorted.txt ./backups/diccionari_$(date +%Y%m%d-%H%M%S).txt
+#cp diccionari_sorted.txt ./backups/diccionari_$(date +%Y%m%d-%H%M%S).txt
 rm diccionari.txt
 mv diccionari_sorted.txt diccionari.txt
 # replace whitespaces with tabs
