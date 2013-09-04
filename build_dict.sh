@@ -9,7 +9,7 @@ perl sptotabs.pl <diccionari.txt >diccionari_tabs.txt
 # create list of used tags
 gawk -f tags.awk diccionari_tabs.txt | sort -u > catalan_tags.txt
 # create tagger dictionary with morfologik tools
-java -jar morfologik.jar tab2morph -inf -i diccionari_tabs.txt -o diccionari_morph.txt -annotation _
+java -jar morfologik.jar tab2morph -i diccionari_tabs.txt -o diccionari_morph.txt -annotation _
 export LC_ALL=C && sort diccionari_morph.txt | java -jar morfologik.jar fsa_build --sorted -f cfsa2 -o catalan.dict
 # dump the tagger dictionary
 java -jar morfologik.jar fsa_dump -d catalan.dict -x >catalan_lt.txt
