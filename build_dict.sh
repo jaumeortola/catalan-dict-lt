@@ -25,3 +25,8 @@ rm diccionari_tabs.txt
 rm diccionari_morph.txt
 rm output2.txt
 rm encoded.txt
+#convert catalan_tags.txt to DOS file
+sed 's/$'"/`echo \\\r`/" catalan_tags.txt > catalan_tags_dos.txt
+rm catalan_tags.txt
+mv catalan_tags_dos.txt catalan_tags.txt
+
