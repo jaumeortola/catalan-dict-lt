@@ -6,25 +6,38 @@ rm diccionari.txt
 mv diccionari_sorted.txt diccionari.txt
 # replace whitespaces with tabs
 perl sptotabs.pl <diccionari.txt >diccionari_tabs.txt
-# create list of used tags
-gawk -f tags.awk diccionari_tabs.txt | sort -u > catalan_tags.txt
-# create tagger dictionary with morfologik tools
-java -jar morfologik.jar tab2morph -i diccionari_tabs.txt -o diccionari_morph.txt -annotation _
-export LC_ALL=C && sort diccionari_morph.txt | java -jar morfologik.jar fsa_build --sorted -f cfsa2 -o catalan.dict
-# dump the tagger dictionary
-java -jar morfologik.jar fsa_dump -d catalan.dict -x >catalan_lt.txt
-# reorder columns for syntesis dictionary
-gawk -f synthesis.awk diccionari_tabs.txt >output2.txt
-# create synthesis dictionary with morfologik tools
-java -jar morfologik.jar tab2morph -nw -i output2.txt -o encoded.txt
-#perl morph_data_ca.pl <output2.txt >encoded.txt
-export LC_ALL=C && sort encoded.txt | java -jar morfologik.jar fsa_build --sorted -f cfsa2 -o catalan_synth.dict
-# dump synthesis dictionary
-java -jar morfologik.jar fsa_dump -d catalan_synth.dict -x >catalan_synth_lt.txt
+export LC_ALL=C && sort diccionari_tabs.txt >diccionari_tabs_sorted.txt
 rm diccionari_tabs.txt
-rm diccionari_morph.txt
-rm output2.txt
-rm encoded.txt
+mv diccionari_tabs_sorted.txt diccionari_tabs.txt
+
+# create list of used tags
+#gawk -f tags.awk diccionari_tabs.txt | sort -u > catalan_tags.txt
+
+# create tagger dictionary with morfologik tools
+java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.POSDictionaryBuilder diccionari_tabs.txt catalan.info
+
+cp /tmp/DictionaryBuilder*.dict ./catalan.dict
+rm /tmp/DictionaryBuilder*.dict
+
+# dump the tagger dictionary
+java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.DictionaryExporter catalan.dict > catalan_lt.txt
+
+# create synthesis dictionary with morfologik tools
+java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.SynthDictionaryBuilder diccionari_tabs.txt catalan_synth.info
+
+#cp /tmp/SynthDictionaryBuilder*_tags.txt ./catalan_tags.txt
+
+cp /tmp/DictionaryBuilder*.dict ./catalan_synth.dict
+rm /tmp/DictionaryBuilder*.dict
+
+cp /tmp/SynthDictionaryBuilder*_tags.txt ./catalan_tags.txt
+rm /tmp/SynthDictionaryBuilder*_tags.txt
+
+# dump synthesis dictionary
+java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.DictionaryExporter catalan_synth.dict > catalan_synth_lt.txt
+
+rm diccionari_tabs.txt
+
 #convert catalan_tags.txt to DOS file
 sed 's/$'"/`echo \\\r`/" catalan_tags.txt > catalan_tags_dos.txt
 rm catalan_tags.txt
