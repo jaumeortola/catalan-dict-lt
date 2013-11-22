@@ -14,16 +14,16 @@ mv diccionari_tabs_sorted.txt diccionari_tabs.txt
 #gawk -f tags.awk diccionari_tabs.txt | sort -u > catalan_tags.txt
 
 # create tagger dictionary with morfologik tools
-java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.POSDictionaryBuilder diccionari_tabs.txt catalan.info
+java -cp ~/lt/languagetool.jar org.languagetool.dev.POSDictionaryBuilder diccionari_tabs.txt catalan.info
 
 cp /tmp/DictionaryBuilder*.dict ./catalan.dict
 rm /tmp/DictionaryBuilder*.dict
 
 # dump the tagger dictionary
-java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.DictionaryExporter catalan.dict > catalan_lt.txt
+java -cp ~/lt/languagetool.jar org.languagetool.dev.DictionaryExporter catalan.dict > catalan_lt.txt
 
 # create synthesis dictionary with morfologik tools
-java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.SynthDictionaryBuilder diccionari_tabs.txt catalan_synth.info
+java -cp ~/lt/languagetool.jar org.languagetool.dev.SynthDictionaryBuilder diccionari_tabs.txt catalan_synth.info
 
 #cp /tmp/SynthDictionaryBuilder*_tags.txt ./catalan_tags.txt
 
@@ -34,7 +34,7 @@ cp /tmp/SynthDictionaryBuilder*_tags.txt ./catalan_tags.txt
 rm /tmp/SynthDictionaryBuilder*_tags.txt
 
 # dump synthesis dictionary
-java -cp ~/lt/languagetool-standalone.jar org.languagetool.dev.DictionaryExporter catalan_synth.dict > catalan_synth_lt.txt
+java -cp ~/lt/languagetool.jar org.languagetool.dev.DictionaryExporter catalan_synth.dict > catalan_synth_lt.txt
 
 rm diccionari_tabs.txt
 
