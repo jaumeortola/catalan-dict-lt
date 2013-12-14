@@ -7,6 +7,8 @@ fsa.dict.encoding=utf-8
 
 #fsa.dict.encoder=prefix
 
+fsa.dict.frequency-included=true
+
 fsa.dict.speller.ignore-numbers=true
 fsa.dict.speller.ignore-punctuation=true
 fsa.dict.speller.ignore-diacritics=true
