@@ -19,5 +19,4 @@ iré	anar	VMIF1S00
 iríem	anar	VMIC1P00
 iríeu	anar	VMIC2P00
 esser	ser	VSN0000B
-ésser	ser	VSN00000
 #contractions
