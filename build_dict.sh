@@ -14,7 +14,7 @@ mv diccionari_tabs_sorted.txt diccionari_tabs.txt
 #gawk -f tags.awk diccionari_tabs.txt | sort -u > catalan_tags.txt
 
 # create tagger dictionary with morfologik tools
-java -cp ~/lt/languagetool.jar org.languagetool.dev.POSDictionaryBuilder diccionari_tabs.txt catalan.info
+java -cp ~/lt/languagetool.jar org.languagetool.dev.POSDictionaryBuilder diccionari_tabs.txt catalan.info ca_wordlist.xml
 
 cp /tmp/DictionaryBuilder*.dict ./catalan.dict
 rm /tmp/DictionaryBuilder*.dict
