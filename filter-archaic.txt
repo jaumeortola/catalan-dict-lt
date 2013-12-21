@@ -1,7 +1,7 @@
 # list of words to be excluded
 # from the synthesis dictionary
 #
-#dialectal
+#dialectal or old
 aquestos	aquest	DD0MP0
 aquestos	aquest	PD0MP000
 havem	haver	VAIP1P00
@@ -19,4 +19,5 @@ iré	anar	VMIF1S00
 iríem	anar	VMIC1P00
 iríeu	anar	VMIC2P00
 esser	ser	VSN0000B
+só	ser	VSIP1S00
 #contractions
