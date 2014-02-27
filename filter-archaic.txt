@@ -21,6 +21,9 @@ iríeu	anar	VMIC2P00
 ésser	ser	VSN00000
 esser	ser	VSN0000B
 só	ser	VSIP1S00
+facem	fer	VMM01P0B
+facem	fer	VMSP1P0B
+faceu	fer	VMSP2P0B
 # unusual femenine
 amor	amor	NCFS000
 ardor	ardor	NCFS000
