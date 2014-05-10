@@ -1,6 +1,6 @@
 #!/bin/bash
 # sort
-export LC_ALL=C && sort diccionari.txt >diccionari_sorted.txt
+export LC_ALL=C && sort -u diccionari.txt >diccionari_sorted.txt
 #cp diccionari_sorted.txt ./backups/diccionari_$(date +%Y%m%d-%H%M%S).txt
 rm diccionari.txt
 mv diccionari_sorted.txt diccionari.txt
